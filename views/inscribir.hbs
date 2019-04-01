@@ -1,0 +1,26 @@
+{{>header}}
+
+<div class="cont-titulo">
+  <legend class="titulo">Formulario de inscripcion</legend>
+  <small><span style="color:#827b7b;">Los campos con * son obligatorios</span></small>
+
+</div>
+<form class="crear" action="/guardarE"  method="post">
+
+  <label>Nombre del estudiante*</label><br><input type="text" name="nombre" required>
+  <br>
+  <label>Curso</label><br><select type="text" name="curso" required>
+  	{{{cursos}}}
+  </select>
+  <br>
+  <label>Documento de identidad*</label><br><input type="number" name="di" required>
+  <br>
+  <label>Telefono*</label><br><input type="number" name="telefono" required>
+    <br>
+  <label>Correo electronico*</label><br><input type="email" name="correo" required>
+    <br>
+  <input class="b1" type="submit" name="boton" value="Enviar">
+
+</form>
+	
+{{>footer}}

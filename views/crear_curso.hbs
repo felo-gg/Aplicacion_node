@@ -1,0 +1,26 @@
+{{>header}}
+<div class="cont-titulo">
+  <legend class="titulo">Formulario para crear un curso</legend>
+  <small><span style="color:#827b7b;">Los campos con * son obligatorios</span></small>
+
+</div>
+<form class="crear" action="/crear"  method="post">
+
+  <label>Id del curso*</label><br><input type="number" name="id" required>
+  <br>
+  <label>Nombre del curso*</label><br><input type="text" name="nombre_curso" required>
+  <br>
+  <label>Presencial</label><input type="radio" name="modalidad" value="Presencial">
+  <label>Virtual</label><input type="radio" name="modalidad" value="Virtual">
+  <br>
+  <label>Valor del curso*</label><br><input type="number" name="valor" required>
+  <br>
+  <label>Duracion del curso</label><br><input type="number" name="duracion">
+    <br>
+  <label>Descripcion*</label><br><textarea name="desp" rows="8" cols="80" required></textarea>
+    <br>
+  <input class="b1" type="submit" name="boton" value="Enviar">
+
+</form>
+
+{{>footer}}

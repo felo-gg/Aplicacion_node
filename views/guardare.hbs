@@ -1,0 +1,39 @@
+{{>header}}
+<script>
+
+
+      let save = {{inscribir id nombreE curso telefono correo}};
+
+  if(save == true){
+    swal.fire({
+      title: '¡Listo!',
+      text: "Quedas inscrito",
+      type: 'success',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'ok'
+    }).then((result) => {
+      if (result.value) {
+         location.href='/index';
+        }
+      })
+
+  }else{
+      swal.fire({
+  title: '¡Oops..!',
+  text: "Ya estas inscrito",
+  type: 'error',
+  confirmButtonColor: '#3085d6',
+  confirmButtonText: 'ok'
+  }).then((result) => {
+  if (result.value) {
+      location.href='/inscribir';
+  }
+  })
+    }
+  
+
+
+
+
+
+  </script>

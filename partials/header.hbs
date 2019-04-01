@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+    <p>{{{descripcion}}}</p>
+  <nav id="menu">
+    <script type="text/javascript">
+
+    let archivo ='{{archivo}}';
+    switch (archivo) {
+      case 'index':
+        document.write("<a class='active' href='index'>Inicio</a>"+
+        "<a href='crear_curso'>crear curso</a>"+
+        "<a href='ver_cursos'>Ver cursos</a>"+
+        "<a href='inscribir'>Inscribir</a>"+
+        "<a href='ver_inscritos'>Ver inscritos</a>");
+      break;
+
+      case 'crear_curso':
+        document.write("<a href='index'>Inicio</a>"+
+        "<a class='active' href='crear_curso'>crear curso</a>"+
+        "<a href='ver_cursos'>Ver cursos</a>"+
+        "<a href='inscribir'>Inscribir</a>"+
+        "<a href='ver_inscritos'>Ver inscritos</a>");
+      break;
+
+      case 'ver_cursos':
+        document.write("<a href='index'>Inicio</a>"+
+        "<a href='crear_curso'>crear curso</a>"+
+        "<a class='active' href='ver_cursos'>Ver cursos</a>"+
+        "<a href='inscribir'>Inscribir</a>"+
+        "<a href='ver_inscritos'>Ver inscritos</a>");
+      break;
+
+      case 'inscribir':
+        document.write("<a href='index'>Inicio</a>"+
+        "<a href='crear_curso'>crear curso</a>"+
+        "<a href='ver_cursos'>Ver cursos</a>"+
+        "<a class='active' href='inscribir'>Inscribir</a>"+
+        "<a href='ver_inscritos'>Ver inscritos</a>");
+      break;
+
+      case 'ver_inscritos':
+        document.write("<a href='index'>Inicio</a>"+
+        "<a href='crear_curso'>crear curso</a>"+
+        "<a href='ver_cursos'>Ver cursos</a>"+
+        "<a href='inscribir'>Inscribir</a>"+
+        "<a class='active' href='ver_inscritos'>Ver inscritos</a>");
+      break;
+    }
+
+
+    </script>
+  </nav>

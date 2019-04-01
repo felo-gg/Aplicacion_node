@@ -1,0 +1,14 @@
+{
+  "name": "entrega-2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "~4.16.0",
+    "hbs": "~4.0.1",
+    "sweetalert2": "^8.7.0"
+  }
+}

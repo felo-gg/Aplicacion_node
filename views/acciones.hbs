@@ -1,0 +1,46 @@
+{{>header}}
+
+  <script>
+
+let accion='{{accion}}';
+
+  switch (accion) {
+
+    case 'crear':
+      let save = {{crear_curso id nombre_curso modalidad valor duracion descripcion}};
+  if(save == true){
+    swal.fire({
+      title: '¡Listo!',
+      text: "Curso creado",
+      type: 'success',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'ok'
+    }).then((result) => {
+      if (result.value) {
+         location.href='/index';
+        }
+      })
+
+  }else{
+      swal.fire({
+  title: '¡Oops..!',
+  text: "Este curso ya esta creado",
+  type: 'error',
+  confirmButtonColor: '#3085d6',
+  confirmButtonText: 'ok'
+  }).then((result) => {
+  if (result.value) {
+      location.href='/crear_curso';
+  }
+  })
+    }
+  }
+
+
+
+
+
+  </script>
+  
+
+{{>footer}}

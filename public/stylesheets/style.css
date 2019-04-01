@@ -1,0 +1,138 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+nav{
+  border-bottom-style:solid;
+  border-bottom-color: #ffc107;
+}
+
+.active{
+  background-color: darkgrey;
+  color: lightgrey;
+}
+
+a {
+  color: darkgrey;
+  margin: 10px;
+  background-color: lightgrey;
+  border-style: none;
+  text-decoration: none;
+  padding-left:3px;
+  padding-right:3px;
+}
+
+footer{
+  margin-top: 30px;
+  color: #d83805;
+  border-top-style: solid;
+  border-top-color: #ff0303;
+}
+
+.crear{
+  width: 371px;
+  height: 385px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 5px;
+  text-align: center;
+  border-style:none;
+  border-radius: 5px;
+  background-color:#2dce1b;
+}
+
+.cont-titulo{
+  margin-top: 40px;
+  text-align: center;
+}
+  .titulo{
+   width: 360px;
+   margin: auto;
+   margin-bottom: 5px;
+   font-size: 25px;
+   border-bottom-color: #716969;
+   border-bottom-style: solid;
+}
+
+input[type=text]{
+  width: 250px;
+}
+input[type=number]{
+  width: 250px;
+}
+
+input{
+  color: #7c807c;
+  margin: 6.5px;
+  border-style: none;
+  border-radius: 2px;
+  text-align: center;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.b1{
+  background: #063e02;
+  color:white;
+  width: 80px;
+  height:25px;
+  cursor: pointer;
+  border-style: none;
+}
+textarea{
+margin: 5px;
+width: 300px;
+height: 109px;
+resize: none;
+}
+
+label{
+  color: #565a56;
+  font-family: sans-serif;
+}
+
+.mostrar{
+
+  background:#fefefe; 
+}
+
+table {
+  
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+  margin-top:30px; 
+ }
+
+td, th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center;
+    
+}
+
+th{
+  background:#236F1B; 
+  color: #BABABA;
+
+}
+
+tr:nth-child(even) {
+  background-color: #55E246;
+}
+
+.detalle{
+  background:#236F1B; 
+  border-style: none;
+  width: 40%;
+  height: 23px;
+}
+
+.detalle a{
+  background:#236F1B; 
+  color:#BABABA;
+}
