@@ -3,10 +3,19 @@ const hbs = require('hbs');
 const path = require('path');
 const body = require('body-parser');
 const app = express();
+const port = process.env.PORT || 3000;
+
 require('./helpers');
 
 const directoriopublico = path.join(__dirname,'../public');
 const directoriopartials = path.join(__dirname,'../partials');
+const dirNode_modules = path.join(__dirname , '../node_modules')
+
+app.use('/css', express.static(dirNode_modules + '/bootstrap/dist/css'));
+app.use('/js', express.static(dirNode_modules + '/jquery/dist'));
+app.use('/js', express.static(dirNode_modules + '/popper.js/dist'));
+
+app.use('/js', express.static(dirNode_modules + '/bootstrap/dist/js'));
 
 app.use(express.static(directoriopublico));
 hbs.registerPartials(directoriopartials);
@@ -14,7 +23,7 @@ app.set('view engine', 'hbs');
 app.use(body.urlencoded({extended:false}));
 
 
-app.get('/index', function(req, res) {
+app.get('/', function(req, res) {
   res.render('index', { title: 'Entrega 2',archivo:'index', descripcion: 'Bienvenido a inicio'
   +'<br><br>'+ 'Entregable semana 2: Manejo de archivos'});
 });
@@ -48,6 +57,12 @@ app.get('/detalles', function(req, res) {
   res.render('detalles', { title: 'Detalles curso', accion:'detalles', archivo:'ver_cursos', id: parseInt(req.query.id)});
 });
 
+app.get('/eliminar', function(req, res){
+  console.log(req.query);
+  res.render('eliminar', {title: 'Eliminar', id: parseInt(req.query.id),
+                          nombre_curso: req.query.nombre_curso})
+});
+
 app.get('*', function(req, res) {
   res.render('error', { title: 'Error pagina no encontrada', descripcion: 'Pagina de error' });
 });
@@ -59,9 +74,11 @@ app.post('/crear', function(req, res){
                                           valor:req.body.valor,
                                           duracion: req.body.duracion,
                                           descripcion: req.body.desp})
-})
+});
 
-app.listen(3000, () => {console.log('Escuchando en el puerto 3000');
+
+
+app.listen(3000, () => {console.log('Escuchando en el puerto:'+port);
 
 
   });

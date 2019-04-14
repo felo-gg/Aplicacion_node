@@ -3,6 +3,7 @@
   const swal = require('sweetalert2');
 
 
+
   listaCursos = [];
 
   const listarC = () => {
@@ -127,7 +128,7 @@ hbs.registerHelper('detalles', id => {
                 <p style='font-size:25px;'> Modalidad: "+curso.modalidad+" </p>\
                 <p style='font-size:25px;'> Duracion: "+curso.duracion+" horas </p>\
                 <p style='font-size:25px;'> Valor: "+curso.valor+" </p>\
-                <p style='font-size:25px;'> descripcion: "+curso.descripcion+"</p></center>";
+                <p style='font-size:25px;'> Descripcion: "+curso.descripcion+"</p></center>";
 
    return texto;
 
@@ -138,9 +139,9 @@ hbs.registerHelper('inscribir', (id, nombreE, curso, telefono, correo) => {
 
     listarE();
     let vid = listaEstudiante.filter(dato => dato.id == id);
-    let vc = vid.filter(dt => dt.curso == curso);
-    console.log(vc);
-    if(vc == 0){
+    let vc = vid.find(dt => dt.curso == curso);
+    
+    if(vc == undefined){
     let ins = {
       id: id,
       nombre: nombreE,
@@ -149,11 +150,11 @@ hbs.registerHelper('inscribir', (id, nombreE, curso, telefono, correo) => {
       correo: correo
     };
 
-    console.log(ins);
-
     listaEstudiante.push(ins);
     return guardarE();
+    console.log("Estudiante Guardado");
   }else{
+      console.log("El estudiante NO se a Guardado");
     return false;
   }
 });
@@ -172,6 +173,95 @@ hbs.registerHelper('inscribir', (id, nombreE, curso, telefono, correo) => {
 
     return texto;
 
+  });
+
+
+  hbs.registerHelper('MostrarE', () => {
+  listarE();
+  listarC();
+
+  let filtro = listaCursos.filter(cs => cs.estado == 'Disponible');
+
+    let texto = `<div style="margin-top:8px;" class="accordion" id="accordionExample">\n`;
+    let i=1;
+    filtro.forEach(curso => {
+
+texto = texto +`<div class="card">
+                  <div class="card-header" id="heading${i}">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true" aria-controls="collapse${i}">
+                        ${curso.nombre_del_curso}
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapse${i}" class="collapse" aria-labelledby="heading${i}" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <table>
+                        <thead>
+                          <th> Nombre del estudiante </th>
+                          <th> D.I </th>
+                          <th> Correo </th>
+                          <th> Eliminar </th>
+                        </thead>
+                        <tbody>`;
+
+      let filtro2=listaEstudiante.filter(es => es.curso == curso.nombre_del_curso);
+      filtro2.forEach(estudiante => {
+      texto = texto + 
+                          `<tr>
+                          <td>${estudiante.nombre}</td> 
+                          <td>${estudiante.id}</td> 
+                          <td>${estudiante.correo}</td>
+                          <td><button class='detalle'><a href='eliminar?id=${estudiante.id}&nombre_curso=${curso.nombre_del_curso}'> Eliminar </a></button></td></tr>`;
+
+
+      })
+      texto = texto+`
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>`; 
+         
+i=i+1;
+    });
+
+    texto=texto+'</div>';
+
+
+  return texto;
+});
+
+  hbs.registerHelper('eliminar', (id, nombre_curso) => {
+    listarE();
+    console.log(id);
+    console.log(nombre_curso);
+    let nuevo=[];
+    
+    listaEstudiante.forEach(est =>{
+
+      if ((est.id != id) || (est.curso != nombre_curso)) {
+
+        let nuv = {
+      id: est.id,
+      nombre: est.nombre,
+      curso: est.curso,
+      telefono: est.telefono,
+      correo: est.correo
+    };
+
+    nuevo.push(nuv);
+      }
+
+      listaEstudiante = nuevo;
+
+      guardarE();
+
+      
+
+    })
+
+    
   })
 
 
