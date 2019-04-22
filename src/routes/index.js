@@ -37,7 +37,7 @@ app.get('/ver_cursos', function(req, res) {
 });
 
 app.get('/inscribir', function(req, res) {
-  res.render('Inscribir', { title: 'Inscribirse',archivo:'inscribir', descripcion: 'Aqui puede inscribirse'});
+  res.render('inscribir', { title: 'Inscribirse',archivo:'inscribir', descripcion: 'Aqui puede inscribirse'});
 });
 
 app.post('/guardare', function(req, res){
