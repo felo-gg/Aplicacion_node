@@ -22,7 +22,7 @@ app.use(express.static(directoriopublico));
 app.use(body.urlencoded({extended:false}));
 
 app.use(require('./index.js'));
-
+/*
 mongoose.connect('mongodb://localhost:27017/continua', {useNewUrlParser: true}, (err,resultado) => {
 
 if (err) {
@@ -31,7 +31,7 @@ if (err) {
 
 console.log('Conectado a la base de datos');
 });
-
+*/
 app.listen(3000, () => {console.log('Escuchando en el puerto:'+port);
 
 
