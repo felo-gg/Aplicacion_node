@@ -32,7 +32,7 @@ if (err) {
 console.log('Conectado a la base de datos');
 });
 */
-app.listen(3000, () => {console.log('Escuchando en el puerto:'+port);
+app.listen(port, () => {console.log('Escuchando en el puerto:'+port);
 
 
   });
