@@ -3,13 +3,13 @@ const hbs = require('hbs');
 const path = require('path');
 const body = require('body-parser');
 const app = express();
-const port = process.env.PORT || 3000;
 
-require('./helpers');
 
-const directoriopublico = path.join(__dirname,'../public');
-const directoriopartials = path.join(__dirname,'../partials');
-const dirNode_modules = path.join(__dirname , '../node_modules')
+require('../helpers');
+
+
+const directoriopartials = path.join(__dirname,'../../partials');
+const dirNode_modules = path.join(__dirname , '../../node_modules')
 
 app.use('/css', express.static(dirNode_modules + '/bootstrap/dist/css'));
 app.use('/js', express.static(dirNode_modules + '/jquery/dist'));
@@ -17,7 +17,7 @@ app.use('/js', express.static(dirNode_modules + '/popper.js/dist'));
 
 app.use('/js', express.static(dirNode_modules + '/bootstrap/dist/js'));
 
-app.use(express.static(directoriopublico));
+
 hbs.registerPartials(directoriopartials);
 app.set('view engine', 'hbs');
 app.use(body.urlencoded({extended:false}));
@@ -76,9 +76,4 @@ app.post('/crear', function(req, res){
                                           descripcion: req.body.desp})
 });
 
-
-
-app.listen(3000, () => {console.log('Escuchando en el puerto:'+port);
-
-
-  });
+module.exports = app
