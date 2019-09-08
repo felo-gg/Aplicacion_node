@@ -42,7 +42,7 @@
       estado = "false";
     })
     console.log("Estudiante guardado");
-      estado = "true";
+      estado = true;
 
         return estado;
   }
@@ -75,9 +75,7 @@ hbs.registerHelper('crear_curso', (id, nombre_curso, modalidad, valor, duracion,
 
     listaCursos.push(curso);
     return guardarC();
-  }else {
-    return false;
-  }
+      }
   }else{
     return false;
   }
@@ -145,14 +143,13 @@ hbs.registerHelper('inscribir', (id, nombreE, curso, telefono, correo) => {
     let ins = {
       id: id,
       nombre: nombreE,
-      curso:curso,
+      curso: curso,
       telefono: telefono,
       correo: correo
     };
 
     listaEstudiante.push(ins);
     return guardarE();
-    console.log("Estudiante Guardado");
   }else{
       console.log("El estudiante NO se a Guardado");
     return false;
@@ -235,10 +232,16 @@ i=i+1;
   hbs.registerHelper('eliminar', (id, nombre_curso) => {
     listarE();
     console.log(id);
+    console.log(typeof(id));
     console.log(nombre_curso);
+    console.log("Nombre entrate es: ",typeof(nombre_curso));
+
     let nuevo=[];
     
+    
+
     listaEstudiante.forEach(est =>{
+      console.log(typeof(est.curso));
 
       if ((est.id != id) || (est.curso != nombre_curso)) {
 
@@ -253,15 +256,11 @@ i=i+1;
     nuevo.push(nuv);
       }
 
-      listaEstudiante = nuevo;
-
-      guardarE();
-
-      
-
     })
 
-    
+    listaEstudiante = nuevo;
+      
+     return guardarE();
   })
 
 

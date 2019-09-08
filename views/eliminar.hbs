@@ -1,5 +1,36 @@
 {{>header}}
 
-	{{{eliminar id nombre_curso}}}
+<script>
+
+	let save = {{eliminar id nombre_curso}}
+
+if(save == true){
+    swal.fire({
+      title: '¡Eliminado!',
+      text: "se elimino el archivo",
+      type: 'success',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'ok'
+    }).then((result) => {
+      if (result.value) {
+         location.href='/';
+        }
+      })
+
+  }else{
+      swal.fire({
+  title: '¡Oops..!',
+  text: "No se pudo eliminar",
+  type: 'error',
+  confirmButtonColor: '#3085d6',
+  confirmButtonText: 'ok'
+  }).then((result) => {
+  if (result.value) {
+      location.href='/ver_inscritos';
+  }
+  })
+    }
+
+</script>
 
 {{>footer}}

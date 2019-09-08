@@ -63,10 +63,6 @@ app.get('/eliminar', function(req, res){
                           nombre_curso: req.query.nombre_curso})
 });
 
-app.get('*', function(req, res) {
-  res.render('error', { title: 'Error pagina no encontrada', descripcion: 'Pagina de error' });
-});
-
 app.post('/crear', function(req, res){
   res.render('acciones', {accion:'crear', id:req.body.id,
                                           nombre_curso:req.body.nombre_curso,
@@ -74,6 +70,10 @@ app.post('/crear', function(req, res){
                                           valor:req.body.valor,
                                           duracion: req.body.duracion,
                                           descripcion: req.body.desp})
+});
+
+app.get('*', function(req, res) {
+  res.render('error', { title: 'Error pagina no encontrada', descripcion: 'Pagina de error' });
 });
 
 module.exports = app
